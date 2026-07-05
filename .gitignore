@@ -1,0 +1,9 @@
+#compiled simulation executables
+alu_sim
+*.out
+
+#waveform files
+*.vcd
+
+#Temporary/editor files
+*.log
