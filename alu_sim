@@ -1,0 +1,72 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000231f9fabb70 .scope module, "alu_tb" "alu_tb" 2 1;
+ .timescale 0 0;
+v00000231f9eb6350_0 .var "A", 31 0;
+v00000231f9eb63f0_0 .var "B", 31 0;
+v00000231f9eb6490_0 .var "alu_control", 3 0;
+v00000231f9efd850_0 .net "result", 31 0, v00000231f9faa020_0;  1 drivers
+v00000231f9efd8f0_0 .net "zero", 0 0, L_00000231f9eb27a0;  1 drivers
+S_00000231f9eb6120 .scope module, "dut" "alu" 2 10, 3 1 0, S_00000231f9fabb70;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "A";
+    .port_info 1 /INPUT 32 "B";
+    .port_info 2 /INPUT 4 "alu_control";
+    .port_info 3 /OUTPUT 32 "result";
+    .port_info 4 /OUTPUT 1 "zero";
+v00000231f9fa6b70_0 .net "A", 31 0, v00000231f9eb6350_0;  1 drivers
+v00000231f9fa67a0_0 .net "B", 31 0, v00000231f9eb63f0_0;  1 drivers
+L_00000231f9efd998 .functor BUFT 1, C4<00000000000000000000000000000000>, C4<0>, C4<0>, C4<0>;
+v00000231f9fa6f00_0 .net/2u *"_ivl_0", 31 0, L_00000231f9efd998;  1 drivers
+v00000231f9fab550_0 .net "alu_control", 3 0, v00000231f9eb6490_0;  1 drivers
+v00000231f9faa020_0 .var "result", 31 0;
+v00000231f9eb62b0_0 .net "zero", 0 0, L_00000231f9eb27a0;  alias, 1 drivers
+E_00000231f9fabe30 .event anyedge, v00000231f9fab550_0, v00000231f9fa6b70_0, v00000231f9fa67a0_0;
+L_00000231f9eb27a0 .cmp/eq 32, v00000231f9faa020_0, L_00000231f9efd998;
+    .scope S_00000231f9eb6120;
+T_0 ;
+    %wait E_00000231f9fabe30;
+    %load/vec4 v00000231f9fab550_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 4;
+    %cmp/u;
+    %jmp/1 T_0.0, 6;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v00000231f9faa020_0, 0, 32;
+    %jmp T_0.2;
+T_0.0 ;
+    %load/vec4 v00000231f9fa6b70_0;
+    %load/vec4 v00000231f9fa67a0_0;
+    %add;
+    %store/vec4 v00000231f9faa020_0, 0, 32;
+    %jmp T_0.2;
+T_0.2 ;
+    %pop/vec4 1;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_00000231f9fabb70;
+T_1 ;
+    %pushi/vec4 15, 0, 32;
+    %store/vec4 v00000231f9eb6350_0, 0, 32;
+    %pushi/vec4 20, 0, 32;
+    %store/vec4 v00000231f9eb63f0_0, 0, 32;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v00000231f9eb6490_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 19 "$display", "A = %d, B = %d , Result = %d , Zero = %b", v00000231f9eb6350_0, v00000231f9eb63f0_0, v00000231f9efd850_0, v00000231f9efd8f0_0 {0 0 0};
+    %vpi_call 2 20 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "alu_tb.v";
+    "alu.v";
