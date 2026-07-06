@@ -40,10 +40,10 @@ A = 15, B = 20, Result = 35, Zero = 0
 
 Current version:
 - ✅ Addition
-- ⏳ Subtraction
-- ⏳ AND
-- ⏳ OR
-- ⏳ XOR
-- ⏳ SLT
+- ✅ Subtraction
+- ✅ AND
+- ✅ OR
+- ✅ XOR
+- ✅ SLT (Set Less Than)
 
 This project is part of my RTL Design portfolio.

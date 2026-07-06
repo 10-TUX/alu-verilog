@@ -8,7 +8,13 @@ module alu (
 
 always @(*) begin
     case (alu_control)
-        4'b0000: result=A+B;
+        4'b0000: result=A+B; //ADD
+        4'b0001: result=A-B; //SUB
+        4'b0010: result=A&B; //AND
+        4'b0011: result=A|B; //OR
+        4'b0100: result=A^B; //XOR
+        4'b0101: result=~(A|B); //NOR
+        4'b0110: result = (A<B)? 31'd1:31'd0; //SLT
         default: result = 32'b0; 
     endcase
 end
