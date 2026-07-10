@@ -1,3 +1,7 @@
+![Verilog](https://img.shields.io/badge/Language-Verilog-blue)
+![Simulation](https://img.shields.io/badge/Simulation-Icarus%20Verilog-green)
+![Waveforms](https://img.shields.io/badge/Waveforms-GTKWave-orange)
+
 
 # 🔧 Parameterized ALU in Verilog
 
@@ -70,9 +74,6 @@ View waveform:
 ```bash
 gtkwave alu.vcd
 ```
-![alt text](image.png) // add
-![alt text](image-1.png)//shift
-![alt text](image-2.png)//overflow
 ---
 
 ## Sample Output
@@ -88,6 +89,19 @@ Passed 17 / 17 tests
 ```
 
 ---
+## Waveforms
+
+### Addition
+
+![Addition](waveforms/ADD_operation.png)
+
+### Shift Operation
+
+![Shift Operation](waveforms/SHIFT_operation.png)
+
+### Overflow Detection
+
+![Overflow detection](waveforms/OVERFLOW_check.png)
 
 ## Future Improvements
 
