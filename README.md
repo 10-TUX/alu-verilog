@@ -1,20 +1,55 @@
-# 32-bit ALU in Verilog
 
-## Overview
-This project implements a 32-bit Arithmetic Logic Unit (ALU) in Verilog.
+# 🔧 Parameterized ALU in Verilog
 
-Currently implemented:
-- Addition
-- Zero flag generation
+A parameterized Arithmetic Logic Unit (ALU) implemented in Verilog HDL featuring 14 operations, status flags, and a reusable self-checking testbench.
 
-## Inputs
-- A [31:0]
-- B [31:0]
-- alu_control [3:0]
+## Features
 
-## Outputs
-- result [31:0]
-- zero
+- Parameterized data width (default 32-bit)
+- 14 ALU operations
+- Zero flag
+- Carry flag
+- Overflow flag
+- Negative flag
+- Self-checking testbench
+- GTKWave waveform generation
+- Modular opcode definitions using `alu_defines.vh`
+
+---
+
+## Supported Operations
+
+| Category | Operations |
+|----------|------------|
+| Arithmetic | ADD, SUB |
+| Logic | AND, OR, XOR, NOR, XNOR, NOT |
+| Shift | SLL, SRL, SRA |
+| Misc | SLT, PASS A, PASS B |
+
+---
+
+## Status Flags
+
+| Flag | Description |
+|------|-------------|
+| Zero | Result equals zero |
+| Carry | Carry generated during addition |
+| Overflow | Signed arithmetic overflow |
+| Negative | Most significant bit of the result |
+
+---
+
+## Project Structure
+
+```text
+alu-verilog/
+│── alu.v
+│── alu_tb.v
+│── alu_defines.vh
+│── README.md
+```
+
+---
 
 ## Simulation
 
@@ -30,20 +65,39 @@ Run:
 vvp alu_sim
 ```
 
-Example Output:
+View waveform:
 
+```bash
+gtkwave alu.vcd
 ```
-A = 15, B = 20, Result = 35, Zero = 0
+![alt text](image.png) // add
+![alt text](image-1.png)//shift
+![alt text](image-2.png)//overflow
+---
+
+## Sample Output
+
+```text
+ADD : PASS
+SUB : PASS
+AND : PASS
+OR : PASS
+...
+Simulation Complete
+Passed 17 / 17 tests
 ```
 
-## Project Status
+---
 
-Current version:
-- ✅ Addition
-- ✅ Subtraction
-- ✅ AND
-- ✅ OR
-- ✅ XOR
-- ✅ SLT (Set Less Than)
+## Future Improvements
 
-This project is part of my RTL Design portfolio.
+- Signed/Unsigned SLT mode
+- Randomized testbench
+- SystemVerilog assertions
+- Functional coverage
+
+---
+
+## Author
+
+**10-TUX**
